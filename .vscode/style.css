@@ -1,0 +1,201 @@
+/*Esse comando abaixo indica que, para todo o projeto, retirar a margem e preenchimento padrão do CSS e que o tamanho da caixa sempre vai seguir o tamanho da borda, então o preenchimento acaba se adequando à borda*/
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/*aqui é como se eu tivesse selecionando o html raiz (root), no caso a classe inicial que é o dark mode*/
+:root {
+    /*isso aqui sao as definições das variáveis do root, eu posso colocar o nome que eu quiser nessa variável*/
+    --text-color: #ffffff;
+    --bg-url: url(./assets/bg-mobile.jpg);
+    --stroke-color: rgba(255, 255, 255, 0.50); /*cor da borda*/
+    --surface-color: rgba(255, 255, 255, 0.10);
+    --surface-color-hover: rgba(255, 255, 255, 0.05);
+    --highlight-color: rgba(255, 255, 255, 0.20);
+    --icon-bg: url(./assets/moon-stars.svg);
+}
+
+.light {
+    --text-color: #000000;
+    --bg-url: url(./assets/bg-mobile-light.jpg);
+    --stroke-color: rgba(0, 0, 0, 0.50);
+    --surface-color: rgba(0, 0, 0, 0.05);
+    --surface-color-hover:  rgba(0, 0, 0, 0.02);
+    --highlight-color: rgba(0, 0, 0, 0.10);
+    --icon-bg: url(./assets/newsun.svg);
+    
+}
+
+body {
+    /*
+    background-image: url(./assets/bg-mobile.jpg);
+    background-repeat: no-repeat;
+    background-position: top center;
+    background-size: cover;
+    */
+
+    /*Agrupando o background: color image repeat position/size*/
+
+    background: var(--bg-url)  no-repeat top center/cover;
+}
+
+/*O asterisco significa que vai aplicar para todas as fontes o comando*/
+
+body * {
+    font-family: 'Inter', sans-serif;
+    color: var(--text-color);
+}
+
+#container {
+    width: 360px;
+    height: 712px;
+    margin: 56px auto 0px;
+    padding: 0 24px;
+    /*margin-right: auto;
+    margin-left: auto*/
+    /*margin: auto;*/
+    
+    /*CSS sempre escreve as propriedades de padding e margin com top, rights, button e left, como um relógio. No caso de tres propriedades, a segunda sempre vai aplicar para ambos os lados*/
+     
+}
+
+/*Isso aqui está sendo feito por causa do alinhamento da imagem, a gente faz uma regra pra que tudo que esteja no elemento "pai", nesse caso o PROFILE, esteja centrado pois a regra de margin auto não funciona. E isso aqui só pode para elementos tipo inline, block nao funciona*/
+
+#profile {
+    text-align: center;
+    padding: 24px;
+}
+
+#profile img {
+    width: 112px;
+    /*height:111px - isso aqui foi tirado pq no HTML nao precisa de altura, ele ja segue o conteúdo da página*/
+    /*margin: auto; - margin auto nao funciona para elementos INLINE*/
+}
+
+#profile p {
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 24px; /* 150% */
+    margin-top: 8px;
+}
+
+#switch {
+
+    position: relative;
+    width: 70px;
+    margin: 4px auto;
+    
+}
+
+/*switch*/
+#switch button {
+    height: 32px;
+    width: 32px;
+    background: white var(--icon-bg) no-repeat center;
+    border: 1px solid rgb(148, 216, 236);
+    border-radius: 9999px;
+
+    position: absolute;
+    left: 0;
+    top: 50%;
+    z-index: 1;
+    transform: translateY(-50%);
+
+}
+
+.light #switch button {
+    right: 0;
+    left: initial;
+}
+
+#switch span {
+    display: block; /*isso aqui pq o span é um elemento inline e o inline não aceita altura e largura fixos*/
+    width: 64px;
+    height: 24px;
+    border-radius: 9999px;
+    border: 1px solid var(--stroke-color);
+    background: var(--surface-color);
+    backdrop-filter: blur(4px);
+
+}
+
+/*Link*/
+
+/*display: flex trabalha com os elementos dentro da caixa, no caso aplicando na ul, ele deixa os elementos dentro da caixa (todos os lis) um ao lado do outro de uma maneira flexivel - se o flex direction é row, se for column ele fica em forma de colunas, fazendo elas se encaixarem no tamanho limitado*/
+ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 24px 0;
+}
+
+ul li a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 16px 24px;
+
+    border-radius: 8px;
+    border: 1px solid var(--stroke-color);
+    background: var(--surface-color);
+    backdrop-filter: blur(4px);
+
+    text-decoration: none;
+    /*tb tem as opções underline, upperline e line-through*/
+    font-weight: 500;
+    
+    /*essa transição é para ficar algo mais suave quando a pagina é carregada e quanto é passado o mouse em cima dos botões*/
+    transition: backgroun .2s;
+
+}
+
+/*pseudo-selector ou hover - que é quando vc passa o mouse em cima do botão e ele muda de estilo*/
+ul li a:hover {
+    /*border: 1.5px solid var(--stroke-color-dark-mode, white);
+    background: var(--surface-color-dark-mode, rgba(255, 255, 255, 0.05));*/
+    border-radius: 8px;
+    border: 1.5px solid var(--text-color);
+    background: var(--surface-color-hover);
+    backdrop-filter: blur(4px);
+}
+
+#socialMedia {
+    display: flex;
+    font-size: 24px;
+    justify-content: center;
+
+}
+
+#socialMedia a {
+    display: flex;
+    padding: 16px;
+    justify-content: center;
+    align-items: center;
+    transition: background 0.2s;
+    border-radius: 50%;
+
+}
+
+#socialMedia a:hover {
+    background: var(--highlight-color);
+    padding: 16px;
+
+}
+
+footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 24px 0;
+    font-size: 14px;
+
+}
+
+footer a {
+    margin-left: 5px;
+}
