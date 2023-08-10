@@ -106,11 +106,18 @@ body * {
     z-index: 1;
     transform: translateY(-50%);
 
+    animation: slide-back .4s;
+
 }
 
 .light #switch button {
-    right: 0;
-    left: initial;
+    /*right: 0;
+    left: initial; - isso aqui foi retirado para incluir a animação*/
+    animation: slide-in 0.4s forwards; /*aqui tem que vir o nome da animação criada e o tempo e o forwards é pro programa manter a animação no seu final, no "to" e nao retornar a origem*/
+}
+
+#switch button:hover {
+    outline: 8px solid var(--highlight-color);
 }
 
 #switch span {
@@ -210,5 +217,25 @@ footer a {
 
     .light {
         --bg-url: url(./assets/bg-desktop-light.jpg)
+    }
+}
+
+/* animação do swith do light e dark */
+
+@keyframes slide-in /*aqui pode ser qlqr nome*/ {
+    from {
+        left: 0;
+    }
+    to {
+        left: 50%;
+    }
+}
+
+@keyframes slide-back {
+    from {
+        left: 50%;
+    }
+    to {
+        left: 0;
     }
 }
