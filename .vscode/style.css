@@ -50,7 +50,8 @@ body * {
 }
 
 #container {
-    width: 360px;
+    width: 100%;
+    max-width: 588px;
     height: 712px;
     margin: 56px auto 0px;
     padding: 0 24px;
@@ -198,4 +199,16 @@ footer {
 
 footer a {
     margin-left: 5px;
+}
+
+/* regra de media queries são regras de responsividade */
+
+@media (min-width: 700px) { /*isso aqui quer dizer: mude a partir do momento que o device for maior que 700px*/
+    :root {
+        --bg-url: url(./assets/bg-desktop.jpg);
+    }
+
+    .light {
+        --bg-url: url(./assets/bg-desktop-light.jpg)
+    }
 }
