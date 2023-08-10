@@ -20,7 +20,7 @@ Programa exclusivo e gratuito, promovido pela Rocketseat para ensino de tecnolog
 <br>
 
 <p align="center">
-  <img alt="Projeto Renata" src="./.github/imgReadme.jpg" width="55%">
+  <img alt="Projeto Renata" src="./.vscode/.github/imgReadme.jpg" width="55%">
 </p>
 
 ## 🚀 Tecnologias
